@@ -12,7 +12,7 @@
 </head>
 <body>
 	<form:form class="form-horizontal" method="POST" commandName="category"
-		action="${pageContext.request.contextPath}/admin/category/edit/${category.categoryId}.html">
+		action="${pageContext.request.contextPath}/admin/category/add.html">
 		<div class="form-group">
 			<label for="categoryName" class="col-md-6 control-label">Tên
 				chuyên mục:</label>

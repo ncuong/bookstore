@@ -42,8 +42,8 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public void add(Category category) throws ClassNotFoundException,
 			SQLException {
-		// TODO Auto-generated method stub
-		
+		categoryDAO = new CategoryDAOImpl();
+		categoryDAO.add(category);
 	}
 
 }

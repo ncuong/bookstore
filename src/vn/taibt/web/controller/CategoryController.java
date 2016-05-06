@@ -99,15 +99,24 @@ public class CategoryController {
 		return "redirect:/admin/category/index.html";
 	}
 
-	@RequestMapping(value="/admin/category/add")
+	@RequestMapping(value="/admin/category/add", method = RequestMethod.GET)
 	public String add(HttpServletRequest request, HttpServletResponse response, Model model) {
+		model.addAttribute("category", new Category());
 		return "category/add";
 	}
 
-	@RequestMapping(value="/admin/category/add")
+	@RequestMapping(value="/admin/category/add", method = RequestMethod.POST)
 	public String add(HttpServletRequest request, HttpServletResponse response, Model model, @ModelAttribute Category category) {
 		categoryService = new CategoryServiceImpl();
-
+		try {
+			categoryService.add(category);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "redirect:/admin/category/index.html";
 	}
 }
