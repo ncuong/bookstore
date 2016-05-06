@@ -10,6 +10,8 @@
 <body>
 	
 	<h4>Danh sách chuyên mục</h4>
+	<br/>
+	<a href="${pageContext.request.contextPath}/admin/category/add.html" class="btn btn-primary" role="button">Thêm chuyên mục</a>
 	<core:if test="${not empty categories}">
 		<table class="table table-bordered">
 			<tr>
@@ -23,7 +25,7 @@
 					<td>${category.categoryId}</td>
 					<td>${category.categoryName}</td>
 					<td>
-						<a href="#">Thay đổi</a>
+						<a href="${pageContext.request.contextPath}/admin/category/edit/${category.categoryId}.html">Thay đổi</a>
 					</td>
 					<td>
 						<a href="${pageContext.request.contextPath}/admin/category/delete/${category.categoryId}.html">Xóa</a>

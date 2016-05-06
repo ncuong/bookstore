@@ -23,6 +23,26 @@ public class CategoryServiceImpl implements CategoryService {
 			SQLException {
 		categoryDAO = new CategoryDAOImpl();
 		categoryDAO.delete(categoryId);
+	}
+
+	@Override
+	public void update(Category category) throws ClassNotFoundException,
+			SQLException {
+		categoryDAO = new CategoryDAOImpl();
+		categoryDAO.update(category);
+	}
+
+	@Override
+	public Category findById(Integer categoryId) throws ClassNotFoundException,
+			SQLException {
+		categoryDAO = new CategoryDAOImpl();
+		return categoryDAO.findById(categoryId);
+	}
+
+	@Override
+	public void add(Category category) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 
