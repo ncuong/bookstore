@@ -72,7 +72,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public Category findById(Integer id) throws ClassNotFoundException, SQLException {
 		Connection con = ConnectionUtil.getConnection();
 		try {
-			String sql = new StringBuilder().append("SELECT * FROM CATEGORIES").toString();
+			String sql = new StringBuilder().append("SELECT * FROM categories WHERE CATEGORY_ID = ?").toString();
 			ResultSet rs = DatabaseHelper.executePreparedStatement(con, sql, new Object[] {id});
 			List<Category> categories = new ArrayList<Category>();
 			while(rs.next()) {
@@ -99,11 +99,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 		CategoryDAO test = new CategoryDAOImpl();
 		
 		try {
-			Connection con = ConnectionUtil.getConnection();
 			List<Category> categories = test.findAll();
 			for (Category category : categories) {
 				System.out.println(category.getCategoryId());
+				System.out.println(category.getCategoryName());
 			}
+			Category category = test.findById(2);
+			System.out.println("TEST: " + category.getCategoryName());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
