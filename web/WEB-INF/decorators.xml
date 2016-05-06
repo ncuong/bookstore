@@ -1,0 +1,25 @@
+<decorators defaultdir="/WEB-INF/jsp/decorators">
+<!--     <excludes> -->
+<!--     	<pattern>**ajax=true</pattern> -->
+<!--         <pattern>/js/*</pattern> -->
+<!--         <pattern>/dwr/*</pattern> -->
+<!--         <pattern>/dwr/index.html</pattern> -->
+<!--         <pattern>/index.jsp</pattern> -->
+<!--         <pattern>/app/coffee/order/report-*.html</pattern> -->
+<!--         <pattern>/app/date-time.html</pattern> -->
+<!--     </excludes> -->
+    <decorator name="site" page="/WEB-INF/jsp/decorators/site.jsp">
+        <pattern>
+        	/category/*
+        </pattern>
+        <pattern>
+        	/post.html
+        </pattern>
+        <pattern>
+        	/app.html
+        </pattern>
+        <pattern>
+        	/*
+        </pattern>
+    </decorator>
+</decorators>
