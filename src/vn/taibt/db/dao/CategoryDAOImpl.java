@@ -69,9 +69,30 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
-	public Category findById(Integer categoryId) throws ClassNotFoundException, SQLException {
-//		Connection con = ConnectionUtil.getConnection();
-		return null;
+	public Category findById(Integer id) throws ClassNotFoundException, SQLException {
+		Connection con = ConnectionUtil.getConnection();
+		try {
+			String sql = new StringBuilder().append("SELECT * FROM CATEGORIES").toString();
+			ResultSet rs = DatabaseHelper.executePreparedStatement(con, sql, new Object[] {id});
+			List<Category> categories = new ArrayList<Category>();
+			while(rs.next()) {
+				Category category = new Category();
+				Integer categoryId = rs.getInt("CATEGORY_ID");
+				String categoryName = rs.getString("CATEGORY_NAME");
+				
+				category.setCategoryId(categoryId);
+				category.setCategoryName(categoryName);
+				
+				categories.add(category);
+			}
+			if(categories.size() > 0) {
+				return categories.get(0);
+			} else {
+				return null;
+			}
+		} finally {
+			
+		}
 	}
 
 	public static void main(String[] args) throws SQLException {
