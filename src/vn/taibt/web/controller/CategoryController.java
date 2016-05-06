@@ -64,6 +64,6 @@ public class CategoryController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "admin/category/index.html";
+		return "redirect:/admin/category/index.html";
 	}
 }

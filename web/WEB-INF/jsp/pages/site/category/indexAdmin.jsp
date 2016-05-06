@@ -26,7 +26,7 @@
 						<a href="#">Thay đổi</a>
 					</td>
 					<td>
-						<a href="#">Xóa</a>
+						<a href="${pageContext.request.contextPath}/admin/category/delete/${category.categoryId}.html">Xóa</a>
 					</td>
 				</tr>
 			</core:forEach>
