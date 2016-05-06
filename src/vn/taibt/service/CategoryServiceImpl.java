@@ -18,4 +18,12 @@ public class CategoryServiceImpl implements CategoryService {
 		return categories;
 	}
 
+	@Override
+	public void delete(Integer categoryId) throws ClassNotFoundException,
+			SQLException {
+		categoryDAO = new CategoryDAOImpl();
+		categoryDAO.delete(categoryId);
+		
+	}
+
 }

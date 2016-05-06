@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>BookStore - Danh sách chuyên mục</title>
+<title>BookStore - Admin - Danh sách chuyên mục</title>
 </head>
 <body>
 	
@@ -15,11 +15,19 @@
 			<tr>
 				<th>STT</th>
 				<th>Tên chuyên mục</th>
+				<th>Thay đổi</th>
+				<th>Xóa</th>
 			</tr>
 			<core:forEach var="category" items="${categories}">
 				<tr>
 					<td>${category.categoryId}</td>
 					<td>${category.categoryName}</td>
+					<td>
+						<a href="#">Thay đổi</a>
+					</td>
+					<td>
+						<a href="#">Xóa</a>
+					</td>
 				</tr>
 			</core:forEach>
 			<tr>

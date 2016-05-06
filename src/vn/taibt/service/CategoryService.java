@@ -7,4 +7,5 @@ import vn.taibt.bean.Category;
 
 public interface CategoryService {
 	public List<Category> findAll() throws ClassNotFoundException, SQLException;
+	public void delete(Integer categoryId) throws ClassNotFoundException, SQLException;
 }
