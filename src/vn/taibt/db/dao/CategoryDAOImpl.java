@@ -16,7 +16,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<Category> findAll() throws ClassNotFoundException, SQLException {
 		Connection con = ConnectionUtil.getConnection();
 		try {
-			String sql = new StringBuilder().append("SELECT * FROM CATEGORIES").toString();
+			String sql = new StringBuilder().append("SELECT * FROM categories").toString();
 			ResultSet rs = DatabaseHelper.executePreparedStatement(con, sql);
 			List<Category> categories = new ArrayList<Category>();
 			while(rs.next()) {
@@ -91,7 +91,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 				return null;
 			}
 		} finally {
-			
+			ConnectionUtil.closeConnection(con);
 		}
 	}
 

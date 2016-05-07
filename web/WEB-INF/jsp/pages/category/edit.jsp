@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-md-offset-6 col-md-6">
-				<button type="submit" class="btn btn-default">Thay đổi</button>
+				<button type="submit" class="btn btn-primary">Thay đổi</button>
 			</div>
 		</div>
 	</form:form>
