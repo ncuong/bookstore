@@ -88,4 +88,38 @@ public class BookController {
 		}
 		return "redirect:/admin/book/index.html";
 	}
+
+	@RequestMapping(value="/admin/book/edit/{id}", method = RequestMethod.GET)
+	public String edit(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable Integer id) {
+		bookService = new BookServiceImpl();
+		categoryService = new CategoryServiceImpl();
+		try {
+			List<Category> categories = categoryService.findAll();
+			model.addAttribute("categories", categories);
+			Book book = bookService.findById(id);
+			model.addAttribute("book", book);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "book/edit";
+	}
+	
+	@RequestMapping(value="/admin/book/edit/{id}", method = RequestMethod.POST)
+	public String edit(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable Integer id, @ModelAttribute Book book) {
+		bookService = new BookServiceImpl();
+		try {
+			bookService.update(book);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/admin/book/index.html";
+	}
 }

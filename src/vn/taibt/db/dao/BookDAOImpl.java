@@ -28,15 +28,23 @@ public class BookDAOImpl implements BookDAO {
 				Integer bookId = rs.getInt("BOOK_ID");
 				String bookName = rs.getString("BOOK_NAME");
 				String auther = rs.getString("AUTHER");
+				String sortDescription = rs.getString("SORT_DESCRIPTION");
+				String fullDescription = rs.getString("FULL_DESCRIPTION");
+				String imagePath = rs.getString("IMAGE_PATH");
+				Integer price = rs.getInt("PRICE");
+				
 				book.setBookId(bookId);
 				book.setBookName(bookName);
 				book.setAuther(auther);
-				
+				book.setSortDescription(sortDescription);
+				book.setFullDescription(fullDescription);
+				book.setImagePath(imagePath);
+				book.setPrice(price);
+
 				Integer categoryId = rs.getInt("CATEGORY_ID");
 				Category category = categoryDAO.findById(categoryId);
 				book.setCategory(category);
-				
-				
+
 				books.add(book);
 			}
 			return books;
@@ -48,11 +56,11 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public void add(Book book) throws ClassNotFoundException, SQLException {
 		String sql = new StringBuilder().append(
-				"INSERT INTO books(BOOK_NAME, AUTHER, CATEGORY_ID) VALUES(?, ?, ?)").toString();
+				"INSERT INTO books(BOOK_NAME, AUTHER, SORT_DESCRIPTION, FULL_DESCRIPTION, IMAGE_PATH, PRICE, CATEGORY_ID) VALUES(?, ?, ?, ?, ?, ?, ?)").toString();
 		Connection con = ConnectionUtil.getConnection();
 		try {
 			DatabaseHelper.executeUpdate(con, sql,
-					new Object[] { book.getBookName(), book.getAuther(), book.getCategory().getCategoryId() });
+					new Object[] { book.getBookName(), book.getAuther(), book.getSortDescription(), book.getFullDescription(), book.getImagePath(), book.getPrice(), book.getCategory().getCategoryId() });
 		} finally {
 			ConnectionUtil.closeConnection(con);
 		}
@@ -61,13 +69,13 @@ public class BookDAOImpl implements BookDAO {
 
 	@Override
 	public void update(Book book) throws ClassNotFoundException, SQLException {
-//		String sql = new StringBuilder().append("UPDATE categories SET CATEGORY_NAME = ? WHERE CATEGORY_ID = ?").toString();
-//		Connection con = ConnectionUtil.getConnection();
-//		try {
-//			DatabaseHelper.executeUpdate(con, sql, new Object[] {category.getCategoryName(), category.getCategoryId()});
-//		} finally {
-//			ConnectionUtil.closeConnection(con);
-//		}
+		String sql = new StringBuilder().append("UPDATE books SET BOOK_NAME = ?, AUTHER = ?, SORT_DESCRIPTION =?, FULL_DESCRIPTION = ?, IMAGE_PATH = ?, PRICE =? , CATEGORY_ID = ? WHERE BOOK_ID = ?").toString();
+		Connection con = ConnectionUtil.getConnection();
+		try {
+			DatabaseHelper.executeUpdate(con, sql, new Object[] {book.getBookName(), book.getAuther(), book.getSortDescription(), book.getFullDescription(), book.getImagePath(), book.getPrice(), book.getCategory().getCategoryId(), book.getBookId()});
+		} finally {
+			ConnectionUtil.closeConnection(con);
+		}
 
 	}
 
@@ -98,12 +106,19 @@ public class BookDAOImpl implements BookDAO {
 				Integer bookId = rs.getInt("BOOK_ID");
 				String bookName = rs.getString("BOOK_NAME");
 				String auther = rs.getString("AUTHER");
+				String sortDescription = rs.getString("SORT_DESCRIPTION");
+				String fullDescription = rs.getString("FULL_DESCRIPTION");
+				String imagePath = rs.getString("IMAGE_PATH");
+				Integer price = rs.getInt("PRICE");
 				Integer categoryId = rs.getInt("CATEGORY_ID");
 				
 				book.setBookId(bookId);
 				book.setBookName(bookName);
 				book.setAuther(auther);
-				
+				book.setSortDescription(sortDescription);
+				book.setFullDescription(fullDescription);
+				book.setImagePath(imagePath);
+				book.setPrice(price);
 				
 				Category category = categoryDAO.findById(categoryId);
 				book.setCategory(category);

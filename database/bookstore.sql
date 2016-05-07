@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2016 at 05:26 AM
+-- Generation Time: May 07, 2016 at 03:52 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -23,26 +23,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authers`
---
-
-CREATE TABLE IF NOT EXISTS `authers` (
-  `AUTHER_ID` int(10) unsigned NOT NULL,
-  `AUTHER_NAME` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `books`
 --
 
 CREATE TABLE IF NOT EXISTS `books` (
   `BOOK_ID` int(10) unsigned NOT NULL,
   `BOOK_NAME` varchar(200) DEFAULT NULL,
-  `AUTHER_ID` int(10) unsigned DEFAULT NULL,
+  `AUTHER` varchar(100) DEFAULT NULL,
+  `SORT_DESCRIPTION` varchar(200) DEFAULT NULL,
+  `FULL_DESCRIPTION` text,
+  `IMAGE_PATH` varchar(512) DEFAULT NULL,
+  `PRICE` int(10) unsigned DEFAULT NULL,
   `CATEGORY_ID` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`BOOK_ID`, `BOOK_NAME`, `AUTHER`, `SORT_DESCRIPTION`, `FULL_DESCRIPTION`, `IMAGE_PATH`, `PRICE`, `CATEGORY_ID`) VALUES
+(1, 'Cô gái đến từ hôm qua', 'Nguyễn Nhật Ánh', NULL, NULL, NULL, NULL, 4),
+(2, 'Mắt biếc', 'Từ Kế Tường', NULL, NULL, NULL, NULL, 4),
+(3, 'Giải tích nâng cao 12', 'Nguyễn Cường', NULL, NULL, NULL, NULL, 1),
+(4, 'Toán giải tích 11', 'Hứa Thị Quýt', NULL, NULL, NULL, NULL, 3),
+(5, 'Còn chút gì để nhớ', 'Nguyễn Nhật Ánh', NULL, NULL, NULL, NULL, 4),
+(7, 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 'Truyện ngắn dành cho thiếu nhi', 'Chi tiết truyện', 'path', 50000, 4),
+(8, 'Đi qua hoa cúc', 'Nguyễn Nhật Ánh', 'Tóm tắt đi qua hoa cúc', 'Chi tiết truyện đi qua hoa cúc', 'path', 50000, 4);
 
 -- --------------------------------------------------------
 
@@ -53,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `books` (
 CREATE TABLE IF NOT EXISTS `categories` (
   `CATEGORY_ID` int(10) unsigned NOT NULL,
   `CATEGORY_NAME` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `categories`
@@ -61,7 +67,10 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 INSERT INTO `categories` (`CATEGORY_ID`, `CATEGORY_NAME`) VALUES
 (1, 'Toán'),
-(2, 'Vật lý');
+(2, 'Vật lý'),
+(3, 'Hóa học'),
+(4, 'Văn học'),
+(5, 'Lịch sử');
 
 -- --------------------------------------------------------
 
@@ -122,16 +131,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 --
--- Indexes for table `authers`
---
-ALTER TABLE `authers`
-  ADD PRIMARY KEY (`AUTHER_ID`);
-
---
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`BOOK_ID`), ADD KEY `CATEGORY_ID` (`CATEGORY_ID`), ADD KEY `AUTHER_ID` (`AUTHER_ID`);
+  ADD PRIMARY KEY (`BOOK_ID`), ADD KEY `CATEGORY_ID` (`CATEGORY_ID`), ADD KEY `AUTHER_ID` (`AUTHER`);
 
 --
 -- Indexes for table `categories`
@@ -168,20 +171,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `authers`
---
-ALTER TABLE `authers`
-  MODIFY `AUTHER_ID` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `BOOK_ID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `BOOK_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CATEGORY_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `CATEGORY_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
@@ -205,7 +203,6 @@ ALTER TABLE `users`
 -- Constraints for table `books`
 --
 ALTER TABLE `books`
-ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`AUTHER_ID`) REFERENCES `authers` (`AUTHER_ID`),
 ADD CONSTRAINT `books_ibfk_2` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `categories` (`CATEGORY_ID`);
 
 --

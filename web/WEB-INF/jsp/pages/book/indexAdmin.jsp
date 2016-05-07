@@ -18,6 +18,10 @@
 				<th>STT</th>
 				<th>Tên sách</th>
 				<th>Tác giả</th>
+				<th>Tóm tắt</th>
+				<th>Chi tiết</th>
+				<th>Ảnh đại diện</th>
+				<th>Giá</th>
 				<th>Chuyên mục</th>
 				<th>Thay đổi</th>
 				<th>Xóa</th>
@@ -27,6 +31,10 @@
 					<td>${book.bookId}</td>
 					<td>${book.bookName}</td>
 					<td>${book.auther}</td>
+					<td>${book.sortDescription}</td>
+					<td>${book.fullDescription}</td>
+					<td>${book.imagePath}</td>
+					<td>${book.price}</td>
 					<td>${book.category.categoryName}</td>
 					<td>
 						<a href="${pageContext.request.contextPath}/admin/book/edit/${book.bookId}.html">Thay đổi</a>

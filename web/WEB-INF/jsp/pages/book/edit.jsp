@@ -8,11 +8,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>BookStory - Admin - Sách - Add</title>
+<title>BookStory - Admin - Sách - Edit</title>
 </head>
 <body>
 	<form:form class="form-horizontal" method="POST" commandName="book"
-		action="${pageContext.request.contextPath}/admin/book/add.html">
+		action="${pageContext.request.contextPath}/admin/book/edit/${book.bookId}.html">
+		<form:hidden path="bookId"/>
 		<div class="form-group">
 			<label for="bookName" class="col-md-6 control-label">Tên
 				sách:</label>
@@ -67,7 +68,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-md-offset-6 col-md-6">
-				<button type="submit" class="btn btn-primary">Thêm sách</button>
+				<button type="submit" class="btn btn-primary">Thay đổi</button>
 			</div>
 		</div>
 	</form:form>

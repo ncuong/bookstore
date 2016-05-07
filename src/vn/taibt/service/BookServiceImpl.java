@@ -26,8 +26,8 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void update(Book book) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-
+		bookDAO = new BookDAOImpl();
+		bookDAO.update(book);
 	}
 
 	@Override
