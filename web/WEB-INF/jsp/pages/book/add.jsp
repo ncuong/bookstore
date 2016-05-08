@@ -14,59 +14,59 @@
 	<form:form class="form-horizontal" method="POST" commandName="book"
 		action="${pageContext.request.contextPath}/admin/book/add.html">
 		<div class="form-group">
-			<label for="bookName" class="col-md-6 control-label">Tên
+			<label for="bookName" class="col-md-3 control-label">Tên
 				sách:</label>
-			<div class="col-md-6">
+			<div class="col-md-9">
 				<form:input class="form-control" path="bookName"
 					id="bookName" placeholder="Tên sách"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="auther" class="col-md-6 control-label">Tên
+			<label for="auther" class="col-md-3 control-label">Tên
 				tác giả:</label>
-			<div class="col-md-6">
+			<div class="col-md-9">
 				<form:input class="form-control" path="auther"
 					id="auther" placeholder="Tác giả"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="sortDescription" class="col-md-6 control-label">Tóm tắt</label>
-			<div class="col-md-6">
+			<label for="sortDescription" class="col-md-3 control-label">Tóm tắt</label>
+			<div class="col-md-9">
 				<form:input class="form-control" path="sortDescription"
 					id="sortDescription" placeholder="Tóm tắt"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="fullDescription" class="col-md-6 control-label">Chi tiết</label>
-			<div class="col-md-6">
-				<form:input class="form-control" path="fullDescription"
+			<label for="fullDescription" class="col-md-3 control-label">Chi tiết</label>
+			<div class="col-md-9">
+				<form:textarea class="form-control" path="fullDescription"
 					id="fullDescription" placeholder="Chi tiết"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="imagePath" class="col-md-6 control-label">Ảnh đại diện</label>
-			<div class="col-md-6">
+			<label for="imagePath" class="col-md-3 control-label">Ảnh đại diện</label>
+			<div class="col-md-9">
 				<form:input class="form-control" path="imagePath"
 					id="imagePath" placeholder="Ảnh đại diện"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="price" class="col-md-6 control-label">Giá</label>
-			<div class="col-md-6">
+			<label for="price" class="col-md-3 control-label">Giá</label>
+			<div class="col-md-9">
 				<form:input class="form-control" path="price"
 					id="price" placeholder="Giá"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="category" class="col-md-6 control-label">Chuyên mục</label>
-			<div class="col-md-6">
+			<label for="category" class="col-md-3 control-label">Chuyên mục</label>
+			<div class="col-md-4">
 				<form:select path="category.categoryId" class="form-control">
 					<form:options items="${categories }" itemLabel="categoryName" itemValue="categoryId"/>
 				</form:select>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-md-offset-6 col-md-6">
+			<div class="col-md-offset-3 col-md-9">
 				<button type="submit" class="btn btn-primary">Thêm sách</button>
 			</div>
 		</div>

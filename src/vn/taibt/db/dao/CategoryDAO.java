@@ -11,4 +11,5 @@ public interface CategoryDAO {
 	public void update(Category category) throws ClassNotFoundException, SQLException;
 	public void delete(Integer categoryId) throws ClassNotFoundException, SQLException;
 	public Category findById(Integer categoryId) throws ClassNotFoundException, SQLException;
+	public List<Category> findByCategoryName(String categorySearchName) throws ClassNotFoundException, SQLException;
 }

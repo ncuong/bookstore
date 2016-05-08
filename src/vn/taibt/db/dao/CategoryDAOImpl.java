@@ -95,11 +95,35 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 	}
 
+	@Override
+	public List<Category> findByCategoryName(String categorySearchName)
+			throws ClassNotFoundException, SQLException {
+		Connection con = ConnectionUtil.getConnection();
+		try {
+			String sql = new StringBuilder().append("SELECT * FROM categories INNER JOIN books ON categories.CATEGORY_ID = books.CATEGORY_ID WHERE CATEGORY_NAME LIKE ?").toString();
+			ResultSet rs = DatabaseHelper.executePreparedStatement(con, sql, new Object[] {"%"+categorySearchName+"%"});
+			List<Category> categories = new ArrayList<Category>();
+			while(rs.next()) {
+				Category category = new Category();
+				Integer categoryId = rs.getInt("CATEGORY_ID");
+				String categoryName = rs.getString("CATEGORY_NAME");
+				
+				category.setCategoryId(categoryId);
+				category.setCategoryName(categoryName);
+				
+				categories.add(category);
+			}
+			return categories;
+		} finally {
+			ConnectionUtil.closeConnection(con);
+		}
+	}
+
 	public static void main(String[] args) throws SQLException {
 		CategoryDAO test = new CategoryDAOImpl();
 		
 		try {
-			List<Category> categories = test.findAll();
+			List<Category> categories = test.findByCategoryName("toan");
 			for (Category category : categories) {
 				System.out.println(category.getCategoryId());
 				System.out.println(category.getCategoryName());

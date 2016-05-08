@@ -206,7 +206,7 @@ progid
 			</div>
 			<div class="col-md-9" id="content">
 				<div id="img-content">
-					<section class="Collage effect-parent">
+					<section class="effect-parent">
 						<decorator:body />
 					</section>
 				</div>

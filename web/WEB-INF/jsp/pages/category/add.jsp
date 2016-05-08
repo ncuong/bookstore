@@ -14,15 +14,15 @@
 	<form:form class="form-horizontal" method="POST" commandName="category"
 		action="${pageContext.request.contextPath}/admin/category/add.html">
 		<div class="form-group">
-			<label for="categoryName" class="col-md-6 control-label">Tên
+			<label for="categoryName" class="col-md-3 control-label">Tên
 				chuyên mục:</label>
-			<div class="col-md-6">
+			<div class="col-md-9">
 				<form:input class="form-control" path="categoryName"
 					id="categoryName" placeholder="Tên chuyên mục"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-md-offset-6 col-md-6">
+			<div class="col-md-offset-3 col-md-9">
 				<button type="submit" class="btn btn-primary">Thêm chuyên mục</button>
 			</div>
 		</div>

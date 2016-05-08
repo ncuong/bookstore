@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div id="left-sidebar">
-	<section class="Collage effect-parent">
+	<section class="effect-parent">
 		<div id="cssmenu">
 			<ul>
 				<li class="active"><a href="#"><span>Home</span></a></li>

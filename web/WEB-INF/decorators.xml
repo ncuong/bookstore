@@ -22,4 +22,9 @@
         	/*
         </pattern>
     </decorator>
+    <decorator name="admin" page="/WEB-INF/jsp/decorators/admin.jsp">
+        <pattern>
+        	/admin/*
+        </pattern>
+    </decorator>
 </decorators>
