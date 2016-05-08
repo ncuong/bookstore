@@ -26,5 +26,14 @@
         <pattern>
         	/admin/*
         </pattern>
+        <pattern>
+        	/contact.html
+        </pattern>
+        <pattern>
+        	/about.html
+        </pattern>
+        <pattern>
+        	/service.html
+        </pattern>
     </decorator>
 </decorators>

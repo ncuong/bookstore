@@ -18,18 +18,28 @@
 				<a href="${pageContext.request.contextPath}/admin/user/index.html">User</a>
 			</li>
 			<li>
-				<a href="#">Role</a>
+				<a href="${pageContext.request.contextPath}/admin/role/index.html">Role</a>
+			</li>
+		</ul>
+	</li>
+	<li><a href="#">Post</a>
+		<ul>
+			<li>
+				<a href="${pageContext.request.contextPath}/admin/post_category/index.html">Chuyên mục post</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/admin/post/index.html">Danh sách post</a>
 			</li>
 		</ul>
 	</li>
 	<li>
-		<a href="#">Service</a>
+		<a href="${pageContext.request.contextPath}/service.html">Service</a>
 	</li>
 	<li>
-		<a href="#">About</a>
+		<a href="${pageContext.request.contextPath}/about.html">About</a>
 	</li>
 	<li>
-		<a href="#">Contact</a>
+		<a href="${pageContext.request.contextPath}/contact.html">Contact</a>
 	</li>
 	<li>
 		<a href="${pageContext.request.contextPath}/login.html">Log in</a>

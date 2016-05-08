@@ -43,13 +43,13 @@
 								</li>
 							</ul></li>
 						<li>
-							<a href="${pageContext.request.contextPath}">Service</a>
+							<a href="${pageContext.request.contextPath}/service.html">Service</a>
 						</li>
 						<li>
-							<a href="${pageContext.request.contextPath}">About</a>
+							<a href="${pageContext.request.contextPath}/about.html">About</a>
 						</li>
 						<li>
-							<a href="${pageContext.request.contextPath}">Contact</a>
+							<a href="${pageContext.request.contextPath}/contact.html">Contact</a>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/login.html">Log in</a>
