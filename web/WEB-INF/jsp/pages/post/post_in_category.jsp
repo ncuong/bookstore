@@ -8,33 +8,21 @@
 <title>BookStore - Danh mục bài viết</title>
 </head>
 <body>
-	
-	<h4>Danh mục bài viết</h4>
-	<br/>
-	<core:if test="${not empty posts}">
-		<table class="table table-bordered">
-			<tr>
-				<th>STT</th>
-				<th>Tiêu đề</th>
-				<th>Nội dung ngắn gọn</th>
-<!-- 				<th>Nội dung</th> -->
-<!-- 				<th>Ngày đăng</th> -->
-				<th>Chuyên mục</th>
-			</tr>
+	<core:choose>
+		<core:when test="${not empty posts}">
 			<core:forEach var="post" items="${posts}">
-				<tr>
-					<td>${post.postId}</td>
-					<td>${post.postTitle}</td>
-<%-- 					<td>${post.postContent}</td> --%>
-					<td>${post.postSortContent}</td>
-<%-- 					<td>${post.dateModified}</td> --%>
-					<td>${post.postCategory.postCategoryName}</td>
-				</tr>
+				<div class="col-md-12">
+					<h3>${post.postTitle}</h3>
+					<div id="post_content">
+						${post.postSortContent}
+					</div>
+					<h6> Chuyên mục: <span>${post.postCategory.postCategoryName}</span></h6>
+				</div>
 			</core:forEach>
-			<tr>
-			
-			</tr>
-		</table>
-	</core:if>
+		</core:when>
+		<core:otherwise>
+			<p>Không có bài viết nào trong chuyên mục này</p>
+		</core:otherwise>
+	</core:choose>
 </body>
 </html>
