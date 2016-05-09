@@ -6,24 +6,24 @@
 							<ul>
 								<li><a href="${pageContext.request.contextPath}">Sách giáo khoa</a>
 									<ul>
-										<li><a href="${pageContext.request.contextPath}">Toán</a></li>
-										<li><a href="${pageContext.request.contextPath}">Văn học</a></li>
-										<li><a href="${pageContext.request.contextPath}">Lịch sử</a></li>
-										<li><a href="${pageContext.request.contextPath}">Địa lý</a></li>
-										<li><a href="${pageContext.request.contextPath}">Hóa học</a></li>
-										<li><a href="${pageContext.request.contextPath}">Vật lý</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/toan.html">Toán</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/van_hoc.html">Văn học</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/lich_su.html">Lịch sử</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/dia_ly.html">Địa lý</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/hoa_hoc.html">Hóa học</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/vat_ly.html">Vật lý</a></li>
 									</ul>
 								</li>
 								<li><a href="${pageContext.request.contextPath}">Tạp chí</a>
 									<ul>
-										<li><a href="${pageContext.request.contextPath}">Tin học & tuổi trẻ</a></li>
-										<li><a href="${pageContext.request.contextPath}">Toán học & tuổi trẻ</a></li>
-										<li><a href="${pageContext.request.contextPath}">Hoa Học Trò - H2T</a></li>
-										<li><a href="${pageContext.request.contextPath}">Tuôi trẻ cười</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/tin_hoc_va_tuoi_tre">Tin học và tuổi trẻ</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/toan_hoc_va_tuoi_tre">Toán học và tuổi trẻ</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/hoa_hoc_tro.html">Hoa Học Trò - H2T</a></li>
+										<li><a href="${pageContext.request.contextPath}/book/tuoi_tre_cuoi.html">Tuôi trẻ cười</a></li>
 									</ul>
 								</li>
-								<li><a href="${pageContext.request.contextPath}">Nghệ thuật</a></li>
-								<li><a href="${pageContext.request.contextPath}">Tin học</a></li>
+								<li><a href="${pageContext.request.contextPath}/book/nghe_thuat.html">Nghệ thuật</a></li>
+								<li><a href="${pageContext.request.contextPath}/book/tin_hoc.html">Tin học</a></li>
 							</ul></li>
 						<li><a href="${pageContext.request.contextPath}">Blog</a>
 							<ul>

@@ -11,4 +11,5 @@ public interface BookService {
 	public void update(Book book) throws ClassNotFoundException, SQLException;
 	public void delete(Integer bookId) throws ClassNotFoundException, SQLException;
 	public Book findById(Integer bookId) throws ClassNotFoundException, SQLException;
+	public List<Book> findByCategoryName(String categoryName)throws ClassNotFoundException, SQLException;
 }

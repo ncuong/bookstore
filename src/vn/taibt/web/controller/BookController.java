@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import vn.taibt.bean.Book;
 import vn.taibt.bean.Category;
+import vn.taibt.bean.Book;
 import vn.taibt.service.BookService;
 import vn.taibt.service.BookServiceImpl;
 import vn.taibt.service.CategoryService;
 import vn.taibt.service.CategoryServiceImpl;
+import vn.taibt.service.PostServiceImpl;
 
 @Controller
 public class BookController {
@@ -121,5 +123,21 @@ public class BookController {
 			e.printStackTrace();
 		}
 		return "redirect:/admin/book/index.html";
+	}
+	
+	@RequestMapping(value="/book/{categoryName}", method = RequestMethod.GET)
+	public String viewByPostCategoryName(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable String categoryName) {
+		bookService = new BookServiceImpl();
+		try {
+			List<Book> books = bookService.findByCategoryName(categoryName);
+			model.addAttribute("books", books);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "book/book_in_category";
 	}
 }

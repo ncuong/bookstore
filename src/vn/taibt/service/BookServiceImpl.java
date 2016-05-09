@@ -46,4 +46,12 @@ public class BookServiceImpl implements BookService {
 		return book;
 	}
 
+	@Override
+	public List<Book> findByCategoryName(String categoryName)
+			throws ClassNotFoundException, SQLException {
+		bookDAO = new BookDAOImpl();
+		List<Book> books = bookDAO.findByCategoryName(categoryName);
+		return books;
+	}
+
 }
