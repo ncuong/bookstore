@@ -51,6 +51,7 @@
 			<label for="category" class="col-md-3 control-label">Chuyên mục:</label>
 			<div class="col-md-4">
 				<form:select path="postCategory.postCategoryId" class="form-control">
+					<form:option value="">---  Select  ---</form:option>
 					<form:options items="${postCategories }" itemLabel="postCategoryName" itemValue="postCategoryId"/>
 				</form:select>
 			</div>
