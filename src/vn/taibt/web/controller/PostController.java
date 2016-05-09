@@ -15,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import vn.taibt.bean.Post;
 import vn.taibt.bean.PostCategory;
-import vn.taibt.bean.Post;
-import vn.taibt.bean.PostCategory;
-import vn.taibt.service.BookServiceImpl;
-import vn.taibt.service.CategoryServiceImpl;
 import vn.taibt.service.PostCategoryService;
 import vn.taibt.service.PostCategoryServiceImpl;
 import vn.taibt.service.PostService;
@@ -124,5 +120,21 @@ public class PostController {
 			e.printStackTrace();
 		}
 		return "redirect:/admin/post/index.html";
+	}
+	
+	@RequestMapping(value="/post/{postCategoryName}", method = RequestMethod.GET)
+	public String viewByPostCategoryName(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable String postCategoryName) {
+		postService = new PostServiceImpl();
+		try {
+			List<Post> posts = postService.findByPostCategoryName(postCategoryName);
+			model.addAttribute("posts", posts);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "post/post_in_category";
 	}
 }

@@ -48,4 +48,12 @@ public class PostServiceImpl implements PostService {
 		return post;
 	}
 
+	@Override
+	public List<Post> findByPostCategoryName(String postCategorySearchName)
+			throws ClassNotFoundException, SQLException {
+		postDAO = new PostDAOImpl();
+		List<Post> posts = postDAO.findByPostCategoryName(postCategorySearchName);
+		return posts;
+	}
+
 }

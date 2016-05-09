@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.taibt.bean.Post;
+import vn.taibt.bean.Post;
 import vn.taibt.bean.PostCategory;
 import vn.taibt.db.ConnectionUtil;
 import vn.taibt.db.DatabaseHelper;
@@ -122,6 +123,42 @@ public class PostDAOImpl implements PostDAO{
 			} else {
 				return null;
 			}
+		} finally {
+			ConnectionUtil.closeConnection(con);
+		}
+	}
+
+	@Override
+	public List<Post> findByPostCategoryName(String postCategorySearchName)
+			throws ClassNotFoundException, SQLException {
+		Connection con = ConnectionUtil.getConnection();
+		try {
+			String sql = new StringBuilder().append("SELECT * FROM posts INNER JOIN post_categories ON post_categories.POST_CATEGORY_ID = posts.POST_CATEGORY_ID WHERE post_categories.`POST_CATEGORY_NAME` LIKE ?").toString();
+			ResultSet rs = DatabaseHelper.executePreparedStatement(con, sql, new Object[] {"%"+postCategorySearchName+"%"});
+			List<Post> posts = new ArrayList<Post>();
+			while(rs.next()) {
+				Post post = new Post();
+				Integer postId = rs.getInt("POST_ID");
+				String postTitle = rs.getString("POST_TITLE");
+				String postSortContent = rs.getString("POST_SORT_CONTENT");
+				String postContent = rs.getString("POST_CONTENT");
+				Integer postCategoryId = rs.getInt("POST_CATEGORY_ID");
+				String postCategoryName = rs.getString("POST_CATEGORY_NAME");
+				
+				post.setPostId(postId);
+				post.setPostTitle(postTitle);
+				post.setPostSortContent(postSortContent);
+				post.setPostContent(postContent);
+				
+				PostCategory postCategory = new PostCategory();
+				postCategory.setPostCategoryId(postCategoryId);
+				postCategory.setPostCategoryName(postCategoryName);
+				
+				post.setPostCategory(postCategory);
+				
+				posts.add(post);
+			}
+			return posts;
 		} finally {
 			ConnectionUtil.closeConnection(con);
 		}

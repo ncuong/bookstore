@@ -35,10 +35,10 @@
 								</li>
 								<li><a href="${pageContext.request.contextPath}">Truyện cười</a>
 									<ul>
-										<li><a href="${pageContext.request.contextPath}">Việt Nam vô đối</a></li>
-										<li><a href="${pageContext.request.contextPath}">Truyện cười vô va</a></li>
-										<li><a href="${pageContext.request.contextPath}">Trạng Quỳnh</a></li>
-										<li><a href="${pageContext.request.contextPath}">Lượm lặt</a></li>
+										<li><a href="${pageContext.request.contextPath}/post/viet_nam_vo_doi.html">Việt Nam vô đối</a></li>
+										<li><a href="${pageContext.request.contextPath}/post/truyen_cuoi_vo_va.html">Truyện cười vô va</a></li>
+										<li><a href="${pageContext.request.contextPath}/post/truyen_trang_quynh.html">Trạng Quỳnh</a></li>
+										<li><a href="${pageContext.request.contextPath}/post/luom_lat.html">Lượm lặt</a></li>
 									</ul>
 								</li>
 							</ul></li>
