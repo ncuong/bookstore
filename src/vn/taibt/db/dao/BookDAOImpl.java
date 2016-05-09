@@ -141,7 +141,7 @@ public class BookDAOImpl implements BookDAO {
 			throws ClassNotFoundException, SQLException {
 		Connection con = ConnectionUtil.getConnection();
 		try {
-			String sql = new StringBuilder().append("SELECT * FROM books INNER JOIN categories ON categories.CATEGORY_ID = books.CATEGORY_ID WHERE CATEGORY_NAME LIKE ?").toString();
+			String sql = new StringBuilder().append("SELECT * FROM books INNER JOIN categories ON categories.CATEGORY_ID = books.CATEGORY_ID WHERE categories.CATEGORY_NAME LIKE ?").toString();
 			ResultSet rs = DatabaseHelper.executePreparedStatement(con, sql, new Object[] {"%"+categorySearchName+"%"});
 			List<Book> books = new ArrayList<Book>();
 			while(rs.next()) {
