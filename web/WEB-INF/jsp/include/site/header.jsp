@@ -54,34 +54,14 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/contact.html">Contact</a>
 						</li>
-						<li>
-							<a href="${pageContext.request.contextPath}/login.html">Login</a>
-						</li>
-<!-- 						<li> -->
-<%-- 							<a href="${pageContext.request.contextPath}/logout.html">Logout</a> --%>
-<!-- 						</li> -->
 						
-<%-- 						<sec:authentication var="principal" property="principal" /> --%>
-<%-- 						<sec:authorize ifAllGranted="ROLE_ADMIN"> --%>
-<%-- 							<core:choose> --%>
-<%-- 								<core:when test="${not empty principal}"> --%>
-<!-- 									<li> -->
-<%-- 										<a href="<core:url value="/j_spring_security_logout" />">Log out</a> --%>
-<!-- 									</li> -->
-<%-- 								</core:when> --%>
-<%-- 								<core:otherwise> --%>
-<!-- 									<li> -->
-<%-- 										<a href="${pageContext.request.contextPath}/login.html">Log in</a> --%>
-<!-- 									</li> -->
-<%-- 								</core:otherwise> --%>
-<%-- 							</core:choose> --%>
-<%-- 						</sec:authorize> --%>
-						
-<!-- 						<li> -->
-<%-- 							<a href="${pageContext.request.contextPath}/login.html">Log in</a> --%>
-<!-- 						</li> -->
-<!-- 						<li> -->
-<%-- 							<a href="<core:url value="/j_spring_security_logout" />">Log out</a> --%>
-<!-- 						</li> -->
+						<core:choose>
+							<core:when test="${pageContext['request'].userPrincipal != null}">
+								<a href="${pageContext.request.contextPath}/logout.html">Log out</a>
+							</core:when>
+							<core:otherwise>
+								<a href="${pageContext.request.contextPath}/login.html">Log in</a>
+							</core:otherwise>
+						</core:choose>
 						
 					</ul>
