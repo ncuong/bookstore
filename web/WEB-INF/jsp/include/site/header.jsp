@@ -57,9 +57,9 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/login.html">Login</a>
 						</li>
-						<li>
-							<a href="${pageContext.request.contextPath}/logout.html">Logout</a>
-						</li>
+<!-- 						<li> -->
+<%-- 							<a href="${pageContext.request.contextPath}/logout.html">Logout</a> --%>
+<!-- 						</li> -->
 						
 <%-- 						<sec:authentication var="principal" property="principal" /> --%>
 <%-- 						<sec:authorize ifAllGranted="ROLE_ADMIN"> --%>

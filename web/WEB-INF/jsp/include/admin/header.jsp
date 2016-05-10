@@ -42,6 +42,6 @@
 		<a href="${pageContext.request.contextPath}/contact.html">Contact</a>
 	</li>
 	<li>
-		<a href="${pageContext.request.contextPath}/login.html">Log in</a>
+		<a href="${pageContext.request.contextPath}/logout.html">Log out</a>
 	</li>
 </ul>
