@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2016 at 06:35 PM
+-- Generation Time: May 10, 2016 at 11:43 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -42,13 +42,13 @@ CREATE TABLE IF NOT EXISTS `books` (
 --
 
 INSERT INTO `books` (`BOOK_ID`, `BOOK_NAME`, `AUTHER`, `SORT_DESCRIPTION`, `FULL_DESCRIPTION`, `IMAGE_PATH`, `PRICE`, `CATEGORY_ID`) VALUES
-(1, 'Cô gái đến từ hôm qua', 'Nguyễn Nhật Ánh', NULL, NULL, NULL, NULL, 4),
+(1, 'Cô gái đến từ hôm qua', 'Nguyễn Nhật Ánh', '', '', '', 0, NULL),
 (2, 'Mắt biếc', 'Từ Kế Tường', NULL, NULL, NULL, NULL, 4),
 (3, 'Giải tích nâng cao 12', 'Nguyễn Cường', NULL, NULL, NULL, NULL, 1),
 (4, 'Toán giải tích 11', 'Hứa Thị Quýt', NULL, NULL, NULL, NULL, 3),
 (5, 'Còn chút gì để nhớ', 'Nguyễn Nhật Ánh', NULL, NULL, NULL, NULL, 4),
 (7, 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 'Truyện ngắn dành cho thiếu nhi', '<p>Chi tiết truyện.</p>', 'path', 50000, 4),
-(8, 'Đi qua hoa cúc', 'Nguyễn Nhật Ánh', 'Tóm tắt đi qua hoa cúc', '<p>Chi tiết truyện Đi qua hoa c&uacute;c.</p>', 'path', 50000, 4);
+(8, 'Đi qua hoa cúc', 'Nguyễn Nhật Ánh', 'Tóm tắt đi qua hoa cúc', '<p>Chi tiết truyện Đi qua hoa c&uacute;c.</p>', 'path', 50000, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,7 +124,7 @@ INSERT INTO `posts` (`POST_ID`, `POST_TITLE`, `POST_SORT_CONTENT`, `POST_CONTENT
 (2, 'Truyện thứ 2', NULL, 'Nội dung truyện thứ 2.', '2016-05-08', 1),
 (3, 'Tiêu đề truyện 3', 'f', '<p>fff</p>', NULL, 2),
 (4, 'Vô va học tiểu học', NULL, '<p><strong>Khi c&ograve;n b&eacute; V&ocirc; va học chung lớp với Natasa.</strong></p>', NULL, 2),
-(5, 'ff', 'ff', '<p>ff</p>', NULL, 3);
+(5, 'ff', 'ff', '<p>ff</p>', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 --
 
 INSERT INTO `roles` (`ROLE_ID`, `ROLE_NAME`) VALUES
-(1, 'Admin'),
+(1, 'ROLE_ADMIN'),
 (2, 'Auther');
 
 -- --------------------------------------------------------
@@ -180,7 +180,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `EMAIL` varchar(100) DEFAULT NULL,
   `DATE_OF_BIRTH` date DEFAULT NULL,
   `ROLE_ID` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`USER_ID`, `FULL_NAME`, `USER_NAME`, `PASSWORD`, `EMAIL`, `DATE_OF_BIRTH`, `ROLE_ID`) VALUES
+(1, 'Cuong Nguyen', 'cuongnguyen', '123456', 'cuong_nguyen@hotmail.com', NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -272,7 +279,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USER_ID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `USER_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
