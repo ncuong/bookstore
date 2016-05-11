@@ -75,8 +75,6 @@ public class BookController {
 		bookService = new BookServiceImpl();
 		String fileName = null;
 		String imagePath = null;
-		
-		
 		try {
 			if(!file.isEmpty()){
 				ServletContext context = request.getSession().getServletContext();
@@ -143,14 +141,35 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/admin/book/edit/{id}", method = RequestMethod.POST)
-	public String edit(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable Integer id, @ModelAttribute Book book) {
+	public String edit(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable Integer id, @ModelAttribute Book book, @RequestParam("file") MultipartFile file) {
 		bookService = new BookServiceImpl();
+		String fileName = null;
+		String imagePath = null;
 		try {
+			if(!file.isEmpty()){
+				ServletContext context = request.getSession().getServletContext();
+				String uploadRootPath = context.getRealPath(BASE_UPLOAD_FOLDER);
+				File uploadRootDir = new File(uploadRootPath);
+				if(!uploadRootDir.exists()) {
+					uploadRootDir.mkdir();
+				}
+				fileName = file.getOriginalFilename();
+				byte[] bytes = file.getBytes();
+				File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + fileName);
+				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				bufferedOutputStream.write(bytes);
+				bufferedOutputStream.close();
+				imagePath = BASE_UPLOAD_FOLDER+"/"+fileName;
+			}
+			book.setImagePath(imagePath);
 			bookService.update(book);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

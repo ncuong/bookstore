@@ -46,8 +46,6 @@
 		<div class="form-group">
 			<label for="imagePath" class="col-md-3 control-label">Ảnh đại diện</label>
 			<div class="col-md-9">
-<%-- 				<form:input class="form-control" path="imagePath" --%>
-<%-- 					id="imagePath" placeholder="Ảnh đại diện"/> --%>
 				<input type="file" name="file" class="form-control" id="imagePath">
 			</div>
 		</div>

@@ -11,7 +11,7 @@
 <title>BookStory - Admin - Sách - Edit</title>
 </head>
 <body>
-	<form:form class="form-horizontal" method="POST" commandName="book"
+	<form:form class="form-horizontal" method="POST" enctype="multipart/form-data" commandName="book"
 		action="${pageContext.request.contextPath}/admin/book/edit/${book.bookId}.html">
 		<form:hidden path="bookId"/>
 		<div class="form-group">
@@ -47,8 +47,7 @@
 		<div class="form-group">
 			<label for="imagePath" class="col-md-3 control-label">Ảnh đại diện</label>
 			<div class="col-md-9">
-				<form:input class="form-control" path="imagePath"
-					id="imagePath" placeholder="Ảnh đại diện"/>
+				<input type="file" name="file" class="form-control" id="imagePath">
 			</div>
 		</div>
 		<div class="form-group">
