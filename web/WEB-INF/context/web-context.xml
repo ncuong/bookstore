@@ -13,5 +13,12 @@
 	<mvc:default-servlet-handler/>
 	<context:annotation-config/>
 	<context:component-scan base-package="vn.taibt"></context:component-scan>
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 
+         <!-- setting maximum upload size -->
+        <property name="maxUploadSize" value="100000" />
+ 
+    </bean>
 
 </beans>

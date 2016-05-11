@@ -1,8 +1,13 @@
 package vn.taibt.web.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +17,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.sun.org.apache.bcel.internal.classfile.Field;
 
 import vn.taibt.bean.Book;
 import vn.taibt.bean.Category;
@@ -27,7 +36,7 @@ public class BookController {
 	
 	BookService bookService;
 	CategoryService categoryService;
-	
+	private static final String BASE_UPLOAD_FOLDER = "uploads";
 	@RequestMapping(value="/admin/book/index", method = RequestMethod.GET)
 	public String indexAdmin(HttpServletRequest request, HttpServletResponse response, Model model) {
 		bookService = new BookServiceImpl();
@@ -62,14 +71,37 @@ public class BookController {
 	}
 
 	@RequestMapping(value="/admin/book/add", method = RequestMethod.POST)
-	public String add(HttpServletRequest request, HttpServletResponse response, Model model, @ModelAttribute Book book) {
+	public String add(HttpServletRequest request, HttpServletResponse response, Model model, @ModelAttribute Book book, @RequestParam("file") MultipartFile file) {
 		bookService = new BookServiceImpl();
+		String fileName = null;
+		String imagePath = null;
+		
+		
 		try {
+			if(!file.isEmpty()){
+				ServletContext context = request.getSession().getServletContext();
+				String uploadRootPath = context.getRealPath(BASE_UPLOAD_FOLDER);
+				File uploadRootDir = new File(uploadRootPath);
+				if(!uploadRootDir.exists()) {
+					uploadRootDir.mkdir();
+				}
+				fileName = file.getOriginalFilename();
+				byte[] bytes = file.getBytes();
+				File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + fileName);
+				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				bufferedOutputStream.write(bytes);
+				bufferedOutputStream.close();
+				imagePath = BASE_UPLOAD_FOLDER+"/"+fileName;
+			}
+			book.setImagePath(imagePath);
 			bookService.add(book);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
