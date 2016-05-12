@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2016 at 11:43 AM
+-- Generation Time: May 12, 2016 at 02:38 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -35,20 +35,7 @@ CREATE TABLE IF NOT EXISTS `books` (
   `IMAGE_PATH` varchar(512) DEFAULT NULL,
   `PRICE` int(10) unsigned DEFAULT NULL,
   `CATEGORY_ID` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `books`
---
-
-INSERT INTO `books` (`BOOK_ID`, `BOOK_NAME`, `AUTHER`, `SORT_DESCRIPTION`, `FULL_DESCRIPTION`, `IMAGE_PATH`, `PRICE`, `CATEGORY_ID`) VALUES
-(1, 'Cô gái đến từ hôm qua', 'Nguyễn Nhật Ánh', '', '', '', 0, NULL),
-(2, 'Mắt biếc', 'Từ Kế Tường', NULL, NULL, NULL, NULL, 4),
-(3, 'Giải tích nâng cao 12', 'Nguyễn Cường', NULL, NULL, NULL, NULL, 1),
-(4, 'Toán giải tích 11', 'Hứa Thị Quýt', NULL, NULL, NULL, NULL, 3),
-(5, 'Còn chút gì để nhớ', 'Nguyễn Nhật Ánh', NULL, NULL, NULL, NULL, 4),
-(7, 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 'Truyện ngắn dành cho thiếu nhi', '<p>Chi tiết truyện.</p>', 'path', 50000, 4),
-(8, 'Đi qua hoa cúc', 'Nguyễn Nhật Ánh', 'Tóm tắt đi qua hoa cúc', '<p>Chi tiết truyện Đi qua hoa c&uacute;c.</p>', 'path', 50000, NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -71,34 +58,6 @@ INSERT INTO `categories` (`CATEGORY_ID`, `CATEGORY_NAME`) VALUES
 (3, 'Hóa học'),
 (4, 'Văn học'),
 (5, 'Lịch sử');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
-CREATE TABLE IF NOT EXISTS `orders` (
-  `ORDER_ID` int(10) unsigned NOT NULL,
-  `CLIENT_NAME` varchar(50) DEFAULT NULL,
-  `CLIENT_ADDRESS` varchar(200) DEFAULT NULL,
-  `CLIENT_PHONE` varchar(20) DEFAULT NULL,
-  `CLIENT_MAIL` varchar(100) DEFAULT NULL,
-  `DATE` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_detail`
---
-
-CREATE TABLE IF NOT EXISTS `order_detail` (
-  `ORDER_DETAIL_ID` int(10) unsigned NOT NULL,
-  `BOOK_ID` int(10) unsigned DEFAULT NULL,
-  `ORDER_ID` int(10) unsigned DEFAULT NULL,
-  `QUANTITY` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -156,15 +115,14 @@ INSERT INTO `post_categories` (`POST_CATEGORY_ID`, `POST_CATEGORY_NAME`) VALUES
 CREATE TABLE IF NOT EXISTS `roles` (
   `ROLE_ID` int(10) unsigned NOT NULL,
   `ROLE_NAME` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`ROLE_ID`, `ROLE_NAME`) VALUES
-(1, 'ROLE_ADMIN'),
-(2, 'Auther');
+(1, 'ROLE_ADMIN');
 
 -- --------------------------------------------------------
 
@@ -178,16 +136,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `USER_NAME` varchar(50) DEFAULT NULL,
   `PASSWORD` varchar(512) DEFAULT NULL,
   `EMAIL` varchar(100) DEFAULT NULL,
-  `DATE_OF_BIRTH` date DEFAULT NULL,
   `ROLE_ID` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`USER_ID`, `FULL_NAME`, `USER_NAME`, `PASSWORD`, `EMAIL`, `DATE_OF_BIRTH`, `ROLE_ID`) VALUES
-(1, 'Cuong Nguyen', 'cuongnguyen', '123456', 'cuong_nguyen@hotmail.com', NULL, 1);
+INSERT INTO `users` (`USER_ID`, `FULL_NAME`, `USER_NAME`, `PASSWORD`, `EMAIL`, `ROLE_ID`) VALUES
+(1, 'Cuong Nguyen', 'cuongnguyen', '123456', 'cuong_nguyen@hotmail.com', 1),
+(2, 'Tai Bui Thi', 'taibt', '123456', 'taibt@gmail.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -204,18 +162,6 @@ ALTER TABLE `books`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`CATEGORY_ID`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`ORDER_ID`);
-
---
--- Indexes for table `order_detail`
---
-ALTER TABLE `order_detail`
-  ADD PRIMARY KEY (`ORDER_DETAIL_ID`), ADD KEY `BOOK_ID` (`BOOK_ID`), ADD KEY `ORDER_ID` (`ORDER_ID`);
 
 --
 -- Indexes for table `posts`
@@ -249,17 +195,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `BOOK_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `BOOK_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `CATEGORY_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `order_detail`
---
-ALTER TABLE `order_detail`
-  MODIFY `ORDER_DETAIL_ID` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `posts`
 --
@@ -274,12 +215,12 @@ ALTER TABLE `post_categories`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `ROLE_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `ROLE_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USER_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `USER_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -289,13 +230,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `books`
 ADD CONSTRAINT `books_ibfk_2` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `categories` (`CATEGORY_ID`);
-
---
--- Constraints for table `order_detail`
---
-ALTER TABLE `order_detail`
-ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`BOOK_ID`) REFERENCES `books` (`BOOK_ID`),
-ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ORDER_ID`);
 
 --
 -- Constraints for table `posts`
