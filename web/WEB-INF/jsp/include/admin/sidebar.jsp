@@ -16,9 +16,9 @@
 						<li><a href="${pageContext.request.contextPath}/admin/user/index.html"><span>User</span></a></li>
 						<li class="last"><a href="${pageContext.request.contextPath}/admin/role/index.html"><span>Role</span></a></li>
 					</ul></li>
-				<li class="last"><a href="#"><span>Service</span></a></li>
-				<li class="last"><a href="#"><span>About</span></a></li>
-				<li class="last"><a href="#"><span>Contact</span></a></li>
+				<li class="last"><a href="${pageContext.request.contextPath}/service.html"><span>Service</span></a></li>
+				<li class="last"><a href="${pageContext.request.contextPath}/about.html"><span>About</span></a></li>
+				<li class="last"><a href="${pageContext.request.contextPath}/contact.html"><span>Contact</span></a></li>
 			</ul>
 		</div>
 	</section>

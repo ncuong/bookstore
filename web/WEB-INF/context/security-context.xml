@@ -10,7 +10,7 @@
 		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
 		<form-login login-page="/login.html"
 			username-parameter="username" password-parameter="password"
-			default-target-url="/admin/book/index.html"/>
+			default-target-url="/"/>
 		<logout logout-success-url="/"/>
 	</http>
 	

@@ -4,6 +4,35 @@
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul id="menu">
 						<li><a href="${pageContext.request.contextPath}">Home</a></li>
+						<core:choose>
+							<core:when test="${pageContext['request'].userPrincipal != null}">
+								<li><a href="#">Dashboard</a>
+									<ul>
+										<li>
+											<a href="${pageContext.request.contextPath}/admin/category/index.html">Chuyên mục sách</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath}/admin/book/index.html">Sách</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath}/admin/post_category/index.html">Chuyên mục bài viết</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath}/admin/post/index.html">Bài viết</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath}/admin/role/index.html">Phân quyền</a>
+										</li>
+										<li>
+											<a href="${pageContext.request.contextPath}/admin/user/index.html">Users</a>
+										</li>
+									</ul>
+								</li>
+							</core:when>
+							<core:otherwise>
+								
+							</core:otherwise>
+						</core:choose>
 						<li><a href="${pageContext.request.contextPath}/book/index.html">Danh mục sách</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}">Sách giáo khoa</a>
