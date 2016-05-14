@@ -20,16 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sun.org.apache.bcel.internal.classfile.Field;
-
 import vn.taibt.bean.Book;
 import vn.taibt.bean.Category;
-import vn.taibt.bean.Book;
 import vn.taibt.service.BookService;
 import vn.taibt.service.BookServiceImpl;
 import vn.taibt.service.CategoryService;
 import vn.taibt.service.CategoryServiceImpl;
-import vn.taibt.service.PostServiceImpl;
 
 @Controller
 public class BookController {

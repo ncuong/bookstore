@@ -12,7 +12,7 @@
 		<core:when test="${not empty books}">
 			<core:forEach var="book" items="${books}">
 				<div class="col-md-4">
-					<img alt="" src="${pageContext.request.contextPath}/${book.imagePath}">
+					<img style="width:243px; height: 312px;" alt="" src="${pageContext.request.contextPath}/${book.imagePath}">
 					<h3>${book.bookName}</h3>
 					<p>Tác giả: <span>${book.auther}</span></p>
 					<p>Tóm tắt: <span>${book.sortDescription}</span></p>

@@ -51,6 +51,9 @@ public class BookServiceImpl implements BookService {
 			throws ClassNotFoundException, SQLException {
 		bookDAO = new BookDAOImpl();
 		List<Book> books = bookDAO.findByCategoryName(categoryName);
+//		for (Book b: books) {
+//			System.out.println(b.getImagePath());
+//		}
 		return books;
 	}
 
