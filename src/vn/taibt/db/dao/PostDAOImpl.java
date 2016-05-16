@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.taibt.bean.Post;
-import vn.taibt.bean.Post;
 import vn.taibt.bean.PostCategory;
 import vn.taibt.db.ConnectionUtil;
 import vn.taibt.db.DatabaseHelper;
