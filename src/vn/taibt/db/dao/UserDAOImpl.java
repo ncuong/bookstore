@@ -1,8 +1,24 @@
 package vn.taibt.db.dao;
 
-import vn.taibt.db.dao.UserDAO;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class UserDAOImpl implements UserDAO {
+import vn.taibt.bean.User;
+import vn.taibt.bean.Role;
+//import vn.taibt.bean.User;
+//import vn.taibt.bean.Role;
+//import vn.taibt.bean.User;
+//import vn.taibt.bean.Role;
+//import vn.taibt.bean.User;
+import vn.taibt.db.ConnectionUtil;
+import vn.taibt.db.DatabaseHelper;
+
+public class UsersDAOImpl implements UserDAO {
+
 	private RoleDAO roleDAO;
 
 	@Override
