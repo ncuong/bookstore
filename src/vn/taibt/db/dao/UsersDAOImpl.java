@@ -17,7 +17,7 @@ import vn.taibt.bean.Role;
 import vn.taibt.db.ConnectionUtil;
 import vn.taibt.db.DatabaseHelper;
 
-public class UserDAOImpl implements UserDAO {
+public class UsersDAOImpl implements UserDAO {
 	
 	private RoleDAO roleDAO;
 
